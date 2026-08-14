@@ -1,32 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.peterpreneur;
 
-import java.util.LinkedList;
-
-/**
- *
- * @author peter
- */
 public class AddTwoNumbers {
 
-    public static void main(String[] args) {
-        //2 non-empty linked list containing two non-negative integers
-        //digits are stored in reverse order
-        //each nodes contains a single digit
-        //add the 2 numbers and return the sum as linked list
-        ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
-        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
-        addTwoNumbers(l1, l2);
+   public static void main(String[] var0) {
+      ListNode var1 = new ListNode(2, new ListNode(4, new ListNode(3)));
+      ListNode var2 = new ListNode(5, new ListNode(6, new ListNode(4)));
+      addTwoNumbers(var1, var2);
+      printList(var1);
+      printList(var2);
+   }
 
-    }
+   public static void addTwoNumbers(ListNode var0, ListNode var1) {
+   }
 
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        
-    
+   public static void printList(ListNode var0) {
+      for(ListNode var1 = var0; var1 != null; var1 = var1.next) {
+         System.out.print(var1.val);
+         if (var1.next != null) {
+            System.out.print(" -> ");
+         }
+      }
 
-    }
+      System.out.println();
+   }
 
+   public static class ListNode {
+      int val;
+      ListNode next;
+
+      ListNode() {
+      }
+
+      ListNode(int var1) {
+         this.val = var1;
+      }
+
+      ListNode(int var1, ListNode var2) {
+         this.val = var1;
+         this.next = var2;
+      }
+   }
 }
