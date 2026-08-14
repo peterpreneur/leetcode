@@ -13,12 +13,15 @@ import java.util.Arrays;
 public class TwoSum {
 
     public static void main(String[] args) {
-        int[] nums = {2, 3, 11, 15};
+        int[] nums = {2, 7, 11, 15};
         int target = 9;
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
+        if (nums == null) {
+            throw new IllegalArgumentException("nums must not be null");
+        }
 
         if (nums.length < 2 || nums.length > 10000) {
             throw new IllegalArgumentException("nums.length must be between 2 and 10000");
@@ -28,24 +31,22 @@ public class TwoSum {
             throw new IllegalArgumentException("target out of range: " + target);
         }
 
-        int[] result = new int[2];
-
         for (int i = 0; i < nums.length; i++) {
 
             if (nums[i] < -1_000_000_000 || nums[i] > 1_000_000_000) {
                 throw new IllegalArgumentException("nums[i] out of range: " + nums[i]);
             }
 
-            for (int j = i; j < nums.length;
+            for (int j = i + 1; j < nums.length;
                     j++) {
                 int sum = nums[i] + nums[j];
                 if (sum == target) {
-                    result[0] = i;
-                    result[1] = j;
-                    break;
+                    return new int[]{i, j};
                 }
             }
         }
-        return result;
+
+        throw new IllegalStateException("No result was found");
+
     }
 }
