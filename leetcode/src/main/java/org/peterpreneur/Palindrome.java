@@ -18,11 +18,20 @@ public class Palindrome {
     public static void main(String[] args) {
 
         int x = 1234;
+        System.out.println("isPalindrome is " + isPalindrome(x));
         System.out.println("int value is " + x);
         System.out.println("Palindrome of " + x + " is " + palindromeCheck(x));
         System.out.println("reverseWithStringBuilder is " + reverseWithStringBuilder(x));
         System.out.println("reverseWithCharArray is " + reverseWithCharArray(x));
         System.out.println("reverseWithCollections is " + reverseWithCollections(x));
+    }
+
+    private static boolean isPalindrome(int x) {
+
+        String text = String.valueOf(Math.abs(x));
+        String reversed = new StringBuilder(text).reverse().toString();
+        return (text == null ? reversed == null : text.equals(reversed));
+
     }
 
     private static boolean palindromeCheck(int num) {
