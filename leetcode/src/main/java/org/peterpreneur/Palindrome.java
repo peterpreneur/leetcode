@@ -4,6 +4,9 @@
  */
 package org.peterpreneur;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * Given an integer x, return true if x is a palindrome, and false otherwise.
@@ -14,8 +17,12 @@ public class Palindrome {
 
     public static void main(String[] args) {
 
-        int x = 121;
-        System.out.println("Palindrome is " + palindromeCheck(x));
+        int x = 1234;
+        System.out.println("int value is " + x);
+        System.out.println("Palindrome of " + x + " is " + palindromeCheck(x));
+        System.out.println("reverseWithStringBuilder is " + reverseWithStringBuilder(x));
+        System.out.println("reverseWithCharArray is " + reverseWithCharArray(x));
+        System.out.println("reverseWithCollections is " + reverseWithCollections(x));
     }
 
     private static boolean palindromeCheck(int num) {
@@ -34,4 +41,58 @@ public class Palindrome {
 
         return original == reversed;
     }
+
+    private static int reverseAritmatic(int num) {
+        int sign = num < 0 ? -1 : 1;
+        num = Math.abs(num);
+
+        int reversed = 0;
+
+        while (num > 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        return sign * reversed;     //1 * 3
+    }
+
+    private static int reverseWithStringBuilder(int num) {
+        String text = String.valueOf(Math.abs(num));
+        String reversed = new StringBuilder(text).reverse().toString();
+        return Integer.parseInt(reversed);
+    }
+
+    private static int reverseWithCharArray(int num) {
+        char[] digits = String.valueOf(Math.abs(num)).toCharArray();
+
+        StringBuilder reversed = new StringBuilder();
+
+        for (int i = digits.length - 1; i >= 0; i--) {
+            reversed.append(digits[i]);
+        }
+
+        return Integer.parseInt(reversed.toString());
+
+    }
+
+    private static int reverseWithCollections(int num) {
+        String text = String.valueOf(Math.abs(num));
+
+        List<Integer> digits = new ArrayList<>();
+
+        for (char ch : text.toCharArray()) {
+            digits.add(ch - '0');
+        }
+
+        int reversed = 0;
+
+        for (int digit : digits.reversed()) {
+            reversed = reversed * 10 + digit;
+        }
+
+        return reversed;
+
+    }
+
 }
