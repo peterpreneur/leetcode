@@ -11,42 +11,30 @@ package org.peterpreneur;
 public class RomanToInteger {
 
     public static void main(String[] args) {
-        // System.out.println(RomanNumeralOnly.C);
-        // System.out.println(RomanNumeralOnly.C.ordinal());
-        // RomanNumeralOnly[] ss = RomanNumeralOnly.values();
-        // for (RomanNumeralOnly s : ss) {
-        //     System.out.println(s);
-        // }
 
-        // System.out.println(RomanNumeral.C.getNum());
-        // RomanNumeral[] roman = RomanNumeral.values();
-        // for (RomanNumeral r : roman) {
-        //     System.out.println(r);
-        //     System.out.println(r.num);
-        //     System.out.println(r.ordinal());
-        // }
-        String inputI = "I";
-        RomanNumeral romanI = RomanNumeral.valueOf(String.valueOf(inputI));
-        System.out.println(romanI);
-        System.out.println(romanI.getNum());
+        String input = "IV";
+        int output = romanToInt(input);
+        System.out.println("final: " + output);
+    }
 
+    private static int romanToInt(String input) {
+        int total = 0;
+        int prevValue = 0;
 
+        for (int i = input.length() - 1; i >= 0; i--) {
+            RomanNumeral numeral = RomanNumeral.valueOf(String.valueOf(input.charAt(i)));
 
-        String input = "III";
-        // int output;
+            int currentValue = numeral.getNum();
 
-        // //need to check from left to right. convert string to char
-        // char[] charInput = input.toCharArray();
+            if (currentValue < prevValue) {
+                total -= currentValue;
+            } else {
+                total += currentValue;
+            }
+            prevValue = currentValue;
 
-        // for (char cInput: charInput) {
-
-        // }
-
-
-        // III - 
-        // IV - 4
-        // X = 10
-        // System.out.println(output);
+        }
+        return total;
     }
 
     private enum RomanNumeralOnly {
