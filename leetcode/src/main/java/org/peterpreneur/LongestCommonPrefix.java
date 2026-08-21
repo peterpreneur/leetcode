@@ -11,30 +11,32 @@ package org.peterpreneur;
 public class LongestCommonPrefix {
 
     public static void main(String[] args) {
-        String[] strs = {"flower", "flow", "flight"};
+        String[] strs = {"flower", "flow", "flight", null};
 
-        System.out.println("Longest Prefix: " + LongestPrefix(strs));
+        System.out.println("Longest Prefix: " + longestCommonPrefix(strs));
 
     }
 
-    private static String LongestPrefix(String[] strs) {
+    private static String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
         }
 
-        String first = strs[0];
+        String firstString = strs[0];
 
-        for (int charIndex = 0; charIndex < first.length(); charIndex++) {
-            char charInFirst = first.charAt(charIndex);
+        for (int charIndex = 0; charIndex < firstString.length(); charIndex++) {
+            char expectedCharacter = firstString.charAt(charIndex);
 
             for (int stringIndex = 1; stringIndex < strs.length; stringIndex++) {
-                String s = strs[stringIndex];
+                String currentString = strs[stringIndex];
 
-                if (charIndex >= s.length() || s.charAt(charIndex) != charInFirst) {
-                    return first.substring(0, charIndex);
+                if (currentString == null
+                        || charIndex >= currentString.length()
+                        || currentString.charAt(charIndex) != expectedCharacter) {
+                    return firstString.substring(0, charIndex);
                 }
             }
         }
-        return first;
+        return firstString;
     }
 }
