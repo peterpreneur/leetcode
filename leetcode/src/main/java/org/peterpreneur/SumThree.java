@@ -15,13 +15,13 @@ import java.util.List;
 public class SumThree {
 
     public static void main(String[] args) {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
+        int[] nums = {1, 2, -2, -1};
         System.out.println(threeSum(nums).toString());
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
         if (nums.length < 3 || nums.length > 3000) {
-            System.out.println("Num size error");
+            return new ArrayList<>();
         }
 
         //sort the array first to avoid duplicates
@@ -36,7 +36,7 @@ public class SumThree {
             // System.out.println("i = " + nums[i]);
 
             skipleft:
-            for (int l = 1; l < arrayLen - 1; l++) {
+            for (int l = i + 1; l < arrayLen - 1; l++) {
                 // System.out.println("l = " + nums[l]);
 
                 for (int r = arrayLen - 1; r > l; r--) {
@@ -62,7 +62,7 @@ public class SumThree {
             }
         }
         if (list1.isEmpty()) {
-            return null;
+            return new ArrayList<>();
         } else {
             return list1.stream()
                     .map(group -> group.stream().sorted().toList())
