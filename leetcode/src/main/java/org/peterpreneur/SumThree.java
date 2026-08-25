@@ -17,7 +17,8 @@ public class SumThree {
     public static void main(String[] args) {
         // int[] nums = {1, 2, -2, -1};
         // int[] nums = {-1,0,1,2,-1,-4};
-        int[] nums = {2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10};
+        int[] nums = {-2,0,1,1,2};
+        // int[] nums = {2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10};
         System.out.println(threeSum(nums).toString());
     }
 
@@ -37,16 +38,17 @@ public class SumThree {
         for (int i = 0; i < arrayLen; i++) {
             // System.out.println("i = " + nums[i] + " ---");
 
-            for (int l = 0; l < arrayLen; l++) {
+            for (int l = i + 1; l < arrayLen; l++) {
                 // System.out.println("l = " + nums[l]);
 
-                for (int r = arrayLen - 1; r >=0; r--) {
+                for (int r = arrayLen - 1; r > l; r--) {
 
                     if ((i != l) && (l != r) && (r != i)) {
+                        System.out.println("i=" + i + " l=" + l + " r=" + r);
+
                         int total = nums[i] + nums[l] + nums[r];
                         if (total == 0) {
 
-                            System.out.println("i=" + i + " l=" + l + " r=" + r);
                             List<Integer> list2 = new ArrayList<>();
                             list2.add(nums[i]);
                             list2.add(nums[l]);
