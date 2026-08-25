@@ -15,10 +15,7 @@ import java.util.List;
 public class SumThree {
 
     public static void main(String[] args) {
-        // int[] nums = {1, 2, -2, -1};
-        // int[] nums = {-1,0,1,2,-1,-4};
-        int[] nums = {-2, 0, 1, 1, 2};
-        // int[] nums = {2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10};
+        int[] nums = {2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10};
         System.out.println(threeSum(nums).toString());
     }
 
