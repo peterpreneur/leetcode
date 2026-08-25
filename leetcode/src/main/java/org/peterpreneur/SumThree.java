@@ -15,7 +15,9 @@ import java.util.List;
 public class SumThree {
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, -2, -1};
+        // int[] nums = {1, 2, -2, -1};
+        // int[] nums = {-1,0,1,2,-1,-4};
+        int[] nums = {2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10};
         System.out.println(threeSum(nums).toString());
     }
 
@@ -33,30 +35,27 @@ public class SumThree {
         int arrayLen = nums.length;
 
         for (int i = 0; i < arrayLen; i++) {
-            // System.out.println("i = " + nums[i]);
+            // System.out.println("i = " + nums[i] + " ---");
 
-            skipleft:
-            for (int l = i + 1; l < arrayLen - 1; l++) {
+            for (int l = 0; l < arrayLen; l++) {
                 // System.out.println("l = " + nums[l]);
 
-                for (int r = arrayLen - 1; r > l; r--) {
-                    // System.out.println("r = " + nums[r]);
+                for (int r = arrayLen - 1; r >=0; r--) {
 
-                    int total = nums[i] + nums[l] + nums[r];
-                    if (total == 0) {
-                        System.out.println("i=" + i + " l=" + l + " r=" + r);
-                        List<Integer> list2 = new ArrayList<>();
-                        list2.add(nums[i]);
-                        list2.add(nums[l]);
-                        list2.add(nums[r]);
-                        System.out.println("list2=" + list2.toString());
+                    if ((i != l) && (l != r) && (r != i)) {
+                        int total = nums[i] + nums[l] + nums[r];
+                        if (total == 0) {
 
-                        list1.add(list2);
-                        System.out.println("list1=" + list1.toString());
-                        System.out.println("-----");
+                            System.out.println("i=" + i + " l=" + l + " r=" + r);
+                            List<Integer> list2 = new ArrayList<>();
+                            list2.add(nums[i]);
+                            list2.add(nums[l]);
+                            list2.add(nums[r]);
 
-                        i++;
-                        break skipleft;
+                            list1.add(list2);
+
+                            break;
+                        }
                     }
                 }
             }
