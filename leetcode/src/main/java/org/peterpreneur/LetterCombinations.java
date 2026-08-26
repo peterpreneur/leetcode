@@ -13,15 +13,58 @@ import java.util.List;
 public class LetterCombinations {
 
     public static void main(String[] args) {
-        String input = "asdklasfjdflkjas";
+        String input = "123456789";
 
         System.out.println(letterCombinations(input));
 
     }
 
     private static List<String> letterCombinations(String digits) {
-        
+        if (digits.length() < 1 || digits.length() > 4) {
+            return null;
+        }
+
+        if (!digits.chars().allMatch(digit -> digit >= '2' && digit <= '9')) {
+            return null;
+        }
+
         return null;
     }
 
+    private enum PhoneDigits {
+        TWO('2', new char[]{'a', 'b', 'c'}),
+        THREE('3', new char[]{'d', 'e', 'f'}),
+        FOUR('4', new char[]{'g', 'h', 'i'}),
+        FIVE('5', new char[]{'j', 'k', 'l'}),
+        SIX('6', new char[]{'m', 'n', 'o'}),
+        SEVEN('7', new char[]{'p', 'q', 'r', 's'}),
+        EIGHT('8', new char[]{'t', 'u', 'v'}),
+        NINE('9', new char[]{'w', 'x', 'y'});
+
+        private final char digit;
+        private final char[] letters;
+
+        PhoneDigits(char digit, char[] letters) {
+            this.digit = digit;
+            this.letters = letters;
+        }
+
+        public char getDigit() {
+            return digit;
+        }
+
+        public char[] getLetters() {
+            return letters.clone();
+        }
+
+        public static PhoneDigits fromDigit(char digit) {
+            for (PhoneDigits key : values()) {
+                if (key.digit == digit) {
+                    return key;
+                }
+            }
+            throw new IllegalArgumentException("Unsupported digit: " + digit);
+        }
+
+    }
 }
