@@ -29,11 +29,8 @@ public class ThreeSumClosest {
             throw new CustomExceptions("Target must be between -10,000 and 10,000.");
         }
 
-        for (int number : nums) {
-            if (number < -1_000 || number > 1_000) {
-                throw new CustomExceptions("Each number must be between -1,000 and 1,000.");
-            }
-        }
+        Arrays.stream(nums)
+                .anyMatch(number -> number < -1_000 || number > 1_000);
 
         Arrays.sort(nums);
 
