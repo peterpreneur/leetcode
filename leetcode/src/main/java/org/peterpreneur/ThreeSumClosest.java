@@ -12,14 +12,26 @@ public class ThreeSumClosest {
 
     public static void main(String[] args) {
 
-        int[] nums = {-1, 2, 1, -4};
+        // int[] nums = {-1, 2, 1, -4};
+        int[] nums = {-1, 2};
+
         int target = 1;
         System.out.println(threeSumClosest(nums, target));
     }
 
     public static int threeSumClosest(int[] nums, int target) {
-        
-        
+        if (nums.length < 3 || nums.length > 500) {
+            throw new CustomExceptions("Wrong length.");
+        }
+
+        if (nums[i] < -1000 || nums[i] > 1000) {
+            throw new CustomExceptions("Invalid value.");
+        }
+
+        if (target < -Math.pow(10, 4) || nums[i] > Math.pow(10, 4)) {
+            throw new CustomExceptions("Invalid target.");
+        }
+
         return 1;
 
     }
