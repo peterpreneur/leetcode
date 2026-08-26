@@ -4,6 +4,7 @@
  */
 package org.peterpreneur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,22 +14,40 @@ import java.util.List;
 public class LetterCombinations {
 
     public static void main(String[] args) {
-        String input = "123456789";
+        String input = "23";
 
         System.out.println(letterCombinations(input));
 
     }
 
     private static List<String> letterCombinations(String digits) {
-        if (digits.length() < 1 || digits.length() > 4) {
-            return null;
+        List<String> combinations = new ArrayList<>();
+
+        if (digits == null || digits.isEmpty()) {
+            return combinations;
         }
 
-        if (!digits.chars().allMatch(digit -> digit >= '2' && digit <= '9')) {
-            return null;
+        backtrack(digits, 0, new StringBuilder(), combinations);
+
+        return combinations;
+    }
+
+    private static void backtrack(String digits, int index, StringBuilder current, List<String> combinations) {
+        if (index == digits.length()) {
+            combinations.add(current.toString());
+            return;
         }
 
-        return null;
+        char digit = digits.charAt(index);
+        PhoneDigits phoneDigits = PhoneDigits.fromDigit(digit);
+
+        for (char letter : phoneDigits.getLetters()) {
+            current.append(letter);
+
+            backtrack(digits, index + 1, current, combinations);
+
+            current.deleteCharAt(current.length() - 1);
+        }
     }
 
     private enum PhoneDigits {
