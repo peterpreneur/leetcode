@@ -21,7 +21,7 @@ public class LetterCombinationBest {
 
     public static void main(String[] args) {
         String digits = "23";
-        letterCombination(digits);
+        System.out.println(letterCombination(digits));
 
     }
 
