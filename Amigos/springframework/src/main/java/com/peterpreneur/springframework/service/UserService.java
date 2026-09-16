@@ -6,13 +6,13 @@ package com.peterpreneur.springframework.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author peter
  */
-@Component
+@Service
 public class UserService {
 
     public record User(int id, String name) {
